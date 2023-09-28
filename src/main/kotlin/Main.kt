@@ -1,4 +1,12 @@
+/**
+ * Main page
+ * Defines the employee data variables and calls
+ * them from the Employee and PositionTitle classes
+ *
+ * KMC 9/27/23
+ */
 fun main(args: Array<String>) {
+    // defining employee data
     var employee1 = Employee("Jade Lennox",
         PositionTitle.Administration,
         true,
@@ -15,6 +23,7 @@ fun main(args: Array<String>) {
         21.00,
         3);
 
+// calling the function from the Employee class
     employee1.displayInfo();
     employee1.calculatePay(45);
     employee2.displayInfo();
