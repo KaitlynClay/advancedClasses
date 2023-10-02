@@ -28,28 +28,36 @@ class Employee(
 
     // calculating what the employee will be paid
     fun calculatePay(hours: Int){
-        var totPay: Double
-        var payRate: Double
-        // testing to see how many hours they worked
-        if (hours <= 40){
-            payRate = payRateEmployee
-        } else if (hours > 40){
-            payRate = payRateEmployee * 1.5
-        }else{
-            print("Invalid hours")
-            return
-        }
+        var totPay: Double = 0.0
+        var payRate: Double = payRateEmployee
+        var overT: Double
+
         // taking into consideration how many hours they worked
         // calculating how much they were paid for the week and
         when (shiftEmployee) {
             1 -> {
-                totPay = hours * payRate
+                if (hours <= 40)
+                    totPay = hours * payRate
+                else if (hours > 40) {
+                    overT = ((hours - 40) * (payRate * 1.5)) + (40 * payRate)
+                    totPay = overT
+                }
             }
             2 -> {
-                totPay = hours * (payRate * 1.05)
+                if (hours <= 40)
+                    totPay = hours * (payRate * 1.05)
+                else if (hours > 40) {
+                    overT = ((hours - 40) * ((payRate * 1.05) * 1.5)) + (40 * (payRate * 1.05))
+                    totPay = overT
+                }
             }
             3 -> {
-                totPay = hours * (payRate * 1.1)
+                if (hours <= 40)
+                    totPay = hours * (payRate * 1.1)
+                else if (hours > 40) {
+                    overT = ((hours - 40) * ((payRate * 1.1) * 1.5)) + (40 * (payRate * 1.1))
+                    totPay = overT
+                }
             }
             else -> {
                 println("We don't have that number of shifts.")
